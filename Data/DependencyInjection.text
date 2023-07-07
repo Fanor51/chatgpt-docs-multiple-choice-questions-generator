@@ -1,0 +1,492 @@
+Question: What is the recommended usage for dependency injection in TYPO3?
+A) Interface injection
+B) Method injection
+C) Constructor injection
+D) GeneralUtility::makeInstance()
+Answer: C
+
+Question: What has been deprecated with TYPO3 v11.4?
+A) Symfony dependency injection
+B) Public arguments
+C) GeneralUtility::makeInstance()
+D) TYPO3\CMS\Extbase\Object\ObjectManager
+Answer: D
+
+Question: What PHP-FIG standard is the TYPO3 interface based on?
+A) PSR-10
+B) PSR-11
+C) PSR-12
+D) PSR-13
+Answer: B
+
+Question: How has obtaining object instances in TYPO3 traditionally been done?
+A) By using the Symfony service container
+B) By calling GeneralUtility::createInstance()
+C) By using the TYPO3 ObjectManager
+D) By directly calling the object's constructor function
+Answer: B
+
+Question: What is the purpose of implementing SingletonInterface through makeInstance()?
+A) To create a new object every time makeInstance() is called
+B) To allow for XCLASSing
+C) To ensure that the same object instance is returned for every makeInstance() call
+D) To avoid using service overrides
+Answer: C
+
+Question: When is XCLASSing considered a last resort hack?
+A) When implementing SingletonInterface
+B) When using Symfony containers
+C) When there is no better solution available
+D) When creating data objects
+Answer: C
+
+Question: What is dependency injection and why is it important?
+A) It is a pattern used to delegate the task of creating objects to the consumer
+B) It is a pattern used to delegate the task of resolving class dependencies away from a consumer towards the underlying framework
+C) It is a pattern used to scan a class for needed injections and prepare dependencies to be injected
+D) It is a pattern used to hand the task of finding an appropriate implementation of a dependency over to the consumer
+
+Answer: B
+
+Question: What is the main drawback of the Extbase object manager?
+A) It is based on runtime reflection, which makes it slow
+B) It is a build-time solution that requires expensive calculations
+C) It is not compatible with makeInstance()
+D) It suffers from issues younger approaches don't face
+
+Answer: A
+
+Question: When is the object lifecycle management conceptualized?
+A) During runtime
+B) During shutdown
+C) At build-time
+D) On subsequent requests
+Answer: C
+
+Question: What can block the frontend and backend?
+A) Misconfiguration of the core's lifecycle management
+B) Errors in the Install Tool container
+C) Symfony DI cache corruption
+D) Multiple requests to the same container instance
+Answer: C
+
+Question: How can a DI recalculation be forced?
+A) Clicking the "Clear all cache" button in the backend top toolbar
+B) Removing all files from the /typo3temp/ directory
+C) Loading or unloading extensions in the backend Extension Manager
+D) Using the "Flush Caches" button in the backend embedded Install Tool or the standalone Install Tool
+Answer: D
+
+Question: What should be done if the container or DI calculation fails?
+A) Wait for the system to automatically heal itself
+B) Fix the configuration and clear the cache
+C) Ignore the issue and continue development
+D) Use the backend Extension Manager to clear the cache
+Answer: B
+
+Question 1: What is a prototype in TYPO3?
+A) An object that is instantiated exactly once within one request
+B) An object that is always created anew when the framework is asked to create one
+C) A method that stores the object internally
+D) An object that is cloned each time one wants to have a new instance of it
+Answer: D 
+
+Question 2: What is a requirement for a singleton in TYPO3?
+A) It must be instantiated exactly once within one request
+B) It must be created anew every time the framework is asked to create one
+C) It must have state and behave differently each time it is used
+D) It must not have state and must act the same way each time it is used
+Answer: D
+
+Question: What is a service in Symfony?
+A) Any class with a *Service suffix
+B) Only controllers and utilities
+C) Anything instantiated through the service container
+D) Classes that are stateful
+Answer: C
+
+Question: Can data objects be accessed through a service container?
+A) Yes
+B) No
+C) Only if instantiated with new()
+D) Only if using GeneralUtility::makeInstance()
+Answer: B
+
+Question 1: How should non-service "data objects" be instantiated in TYPO3?
+A) Via constructor injection
+B) Via setter methods
+C) Via Symfony dependency injection
+D) Via \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance()
+Answer: D
+
+Question 2: What is another way to get services injected besides constructor injection in TYPO3?
+A) Via setter methods
+B) Via plain instantiation
+C) Via Symfony dependency injection
+D) Via \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance()
+Answer: A
+
+Question: Why did TYPO3 core implement injection via methods in addition to the default Symfony constructor injection?
+A) To make code more complicated
+B) To have a backup in case the constructor injection fails
+C) To allow for nullable class properties
+D) To be consistent with Extbase's injection strategy
+Answer: D 
+
+Question: What is the purpose of injecting an instance via methods rather than through the constructor in TYPO3?
+A) To make code more concise
+B) To allow for non-null class properties
+C) To avoid warnings in PHP 7.4
+D) To provide an alternative abstraction scenario 
+Answer: D
+
+Question: Why should abstract classes use inject*() methods instead of constructor injection?
+A) Because constructor injection hardcodes all dependencies of the abstract into extending classes
+B) Because constructor injection allows dependencies to be added without breaking consuming classes
+C) Because inject*() methods are faster than constructor injection
+D) Because it doesn't matter which method of injection is used for abstract classes
+Answer: A
+
+Question: What should be done to dependency properties of abstract classes?
+A) They should be marked final
+B) They should be made public
+C) They should be left as they are
+D) They should be made private
+Answer: D
+
+Question: What is interface injection in dependency injection? 
+A) Requesting injection of a class instead of an interface 
+B) Requesting injection of an interface instead of a class 
+C) Requesting injection of both a class and an interface 
+D) None of the above 
+Answer: B
+
+Question: What is the benefit of using interface injection in dependency injection? 
+A) It forces the service container to always inject a specific class 
+B) It allows the consuming class to code on a specific implementation 
+C) It makes something transparent for consuming classes 
+D) It allows the service container to look up which specific class is configured as implementation of the interface 
+Answer: D
+
+Question: What are the two methods to obtain objects from a service container?
+A) get() and set()
+B) post() and get()
+C) delete() and update()
+D) get() and DI
+Answer: D
+
+Question: How can an extension configure its classes to use dependency injection?
+A) in Configuration/Services.py
+B) in Configuration/Services.xml
+C) in Configuration/Services.php
+D) in Configuration/Services.ini
+Answer: C
+
+Question: What is autoconfiguration in Symfony?
+A) Manually adding service tags to classes
+B) Excluding certain paths from dependency injection
+C) Automatically adding service tags based on implemented interfaces or base classes
+D) Turning off the autowire feature
+Answer: C
+
+Question: Can models be injected as dependencies in Symfony?
+A) Yes, they should always be injected as dependencies
+B) Yes, but only if you enable autowiring
+C) No, models cannot be injected as they are not services
+D) No, models can only be injected if they are marked as shared
+Answer: C
+
+Question 1: What is the purpose of setting public: false in extensions?
+A) It allows for dependency injection of all classes
+B) It is a performance optimization for services available through the dependency injection container
+C) It automatically marks all classes as public
+D) It is a setting for extension configurations unrelated to dependency injection
+Answer: B
+
+Question 2: Which classes are automatically marked as public and do not need to be overridden in Configuration/Services.yaml?
+A) Classes registered in hooks
+B) Non-Extbase controllers
+C) Fluid data processors
+D) Instances of \TYPO3\CMS\Core\SingletonInterface and Extbase controllers
+Answer: D
+
+Question: What is the purpose of making a class public in dependency injection configuration?
+A) To hide the class from being accessed outside of the extension
+B) To make the class available for other extensions to use
+C) To use dependency injection in the context of a TypoScript object
+D) To prevent errors resulting from wrong configuration
+Answer: C
+
+Question: When extending an existing class using XCLASS and injecting additional dependencies using constructor injection, what should be added in the Configuration/Services.yaml file?
+A) Reference to the original class
+B) Reference to the extending extension
+C) Reference to the additional dependencies
+D) Reference to the extended class
+Answer: D
+
+Question: Which TYPO3 feature is related to Symfony dependency injection?
+A) ObjectManager::get
+B) Service container
+C) Dependency injection
+D) PHP The Right Way
+Answer: B
+
+Question: Who wrote an article about dependency injection in TYPO3?
+A) Daniel Goerz
+B) Fabien Potencier
+C) ObjectManager
+D) PHP The Right Way
+Answer: A
+
+Question: What is the recommended usage for dependency injection in TYPO3?
+A) Method injection
+B) Interface injection
+C) Configuration injection
+D) Constructor injection
+Answer: D
+
+Question: What is the Symfony component used for in TYPO3?
+A) Standardizing object initialization
+B) Handling server requests
+C) Managing file uploads
+D) Generating PDF documents
+Answer: A
+
+Question 1: What is the standard interface used in TYPO3 for dependency injection?
+A) PHP-FIG standard PSR-12 Container interface
+B) Symfony dependency injection interface
+C) PSR-11 Container interface
+D) TYPO3-specific dependency injection interface
+Answer: C
+
+Question 2: What solution did TYPO3 have for object lifecycle management before Symfony services were implemented?
+A) Dependency injection
+B) SingletonInterface
+C) extbase ObjectManager
+D) GeneralUtility::makeInstance() with additional arguments
+Answer: C
+
+Question: What is the purpose of implementing SingletonInterface through makeInstance()?
+A) To instantiate multiple object instances
+B) To create a new object instance only if called for
+C) To substitute a class with a custom implementation
+D) To override a service
+Answer: B
+
+Question: When is XCLASSing considered an appropriate solution?
+A) When there is no alternative solution available
+B) When working with Symfony containers
+C) When creating a new object instance
+D) When overriding a service
+Answer: A
+
+Question: What is the main benefit of using dependency injection in software engineering?
+A) It allows for faster object instantiation
+B) It separates concerns and allows for delegation of class dependency resolution to the framework
+C) It eliminates the need for caches
+D) It simplifies complex logging operations
+Answer: B
+
+Question: What was the main issue with the Extbase object manager?
+A) It had no implementation of dependency injection
+B) It was too focused on logging operations
+C) It required expensive runtime calculations
+D) It did not allow for configuration-based instance selection
+Answer: C
+
+Question: When is the object lifecycle management done in TYPO3?
+A) During runtime
+B) At the beginning of the TYPO3 bootstrap process
+C) On the first request to the website
+D) At the end of the TYPO3 bootstrap process
+Answer: B
+
+Question: What may happen if there are errors in the DI cache?
+A) The system will automatically heal the DI cache
+B) The frontend and backend may become slower
+C) The frontend and backend will be completely blocked
+D) Errors in the DI cache have no impact on the website
+Answer: C
+
+Question: How can a developer force a DI recalculation?
+A) By clicking "Clear all cache" in the backend top toolbar
+B) By using the Extension Manager in the backend
+C) By removing all var/cache/code/di/* files
+D) By clicking "Flush Caches" in the Install Tool
+Answer: D
+
+Question: What should a developer do if the container or DI calculation fails?
+A) Wait for the system to automatically fix the issue
+B) Reload the extension using the Extension Manager
+C) Fix the configuration and manually clear the cache
+D) Delete the entire TYPO3 installation and start over
+Answer: C
+
+Question: What is a prototype in TYPO3?
+A) An object that is created once and cloned each time a new instance is needed
+B) An object that is always created anew when the framework is asked to create one
+C) An object that is instantiated exactly once within one request
+D) An object that has state and acts differently each time it's used
+Answer: A
+
+Question: What is the requirement for a singleton in TYPO3?
+A) It must be declared as shared within containers
+B) It must have state and act differently each time it's used
+C) It must be instantiated multiple times within one request
+D) It must act the same way each time it's used, no matter where, how often or when they've been used before
+Answer: D
+
+Question: What is a service in Symfony?
+A) Only classes named with a *Service suffix
+B) Classes instantiated through the service container
+C) Only non static utilities and repositories 
+D) Stateful classes like controllers
+Answer: B
+
+Question: How are data objects instantiated in TYPO3?
+A) Through $container->get()
+B) Using DI
+C) GeneralUtility::makeInstance()
+D) They are not instantiated in TYPO3
+Answer: C
+
+Question: What is the recommended method for instantiating non-service "data objects" in TYPO3?
+A) Use the Symfony dependency injection
+B) Use the new keyword for plain instantiation
+C) Use constructor injection
+D) Use \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance()
+Answer: D
+
+Question: What is autowiring in TYPO3?
+A) A way to instantiate all classes without dependencies using the new keyword
+B) A way to manually inject services into classes using setter methods
+C) A way to automatically provide instances of required services by the Symfony container during object creation
+D) A way to create plain instances of non-service "data objects" using the new keyword
+Answer: C
+
+Question: What is the difference between constructor injection and injection via methods?
+A) There is no difference
+B) Constructor injection is faster
+C) Injection via methods does not require a nullable type hinted class property
+D) Injection via methods is only available in TYPO3 core
+Answer: C
+
+Question: What is the purpose of the injectLogger() method in the AbstractController class?
+A) To add a Logger object to the UserRepository
+B) To create a new instance of the Logger class
+C) To inject a Logger object into the $logger class property
+D) To remove the Logger object from the AbstractController class
+Answer: C
+
+Question: Why should abstract classes in TYPO3 use inject*() methods instead of constructor injection?
+A) Extending classes cannot use constructor injection
+B) It pollutes __construct() with dependencies
+C) It makes it easier to add dependencies to the abstract class later
+D) All of the above
+Answer: D
+
+Question: What is the suggested approach for classes that should not be extended by extensions in TYPO3?
+A) Use constructor injection and mark the class as final
+B) Use inject*() methods and mark the class as final
+C) Use setFooDependency() method with @required annotation
+D) All of the above
+Answer: A
+
+Question: What is the benefit of requesting injection of an interface instead of a class in dependency injection?
+A) It causes errors in the service container 
+B) It makes the consuming class depend on a specific implementation
+C) It allows the consuming class to only code based on the interface signature
+D) It makes the framework unable to inject the dependency
+Answer: C
+
+Question: Can an instance administrator configure the framework to inject a different implementation of an interface?
+A) No, it is not possible
+B) Yes, but it requires modifying the consuming class
+C) Yes, but it will result in errors in the service container
+D) Yes, and it is fully transparent for the consuming class
+Answer: D
+
+Question: What are the two ways to use dependency injection in services?
+A) Via $container->get(), and via extension configuration
+B) Via constructor injection and method injection
+C) Via configuration/Services.yaml and configuration/Services.php
+D) Via service initialization code and class dependencies
+Answer: B
+
+Question: What must be done whenever the service configuration or class dependencies change?
+A) A new extension must be created
+B) The services.yaml file must be deleted
+C) The cache must be flushed
+D) The autoconfigure parameter must be set to true
+Answer: C
+
+Question: What is the purpose of autoconfigure in Symfony?
+A) To manually wire dependencies in the service configuration file
+B) To exclude models from the dependency injection container
+C) To configure special arguments for an extension
+D) To automatically add service tags based on implemented interfaces or base classes
+Answer: D
+
+Question: Why are models excluded from the dependency injection container in Symfony?
+A) Because they require dependency injection
+B) Because they are not publicly available from the container
+C) Because they are created by the Extbase persistence layer, which does not support the DI container
+D) Because they are services and therefore do not need dependency injection
+Answer: C
+
+Question: What is the purpose of setting public: false in extensions?
+A) It controls which services are available through the dependency injection container
+B) It marks all classes as public by default
+C) It disables all dependency injection for an extension
+D) It is not recommended to set public: false
+Answer: A
+
+Question: Which classes are automatically marked as public due to autoconfigure: true being set?
+A) Non-Extbase controllers
+B) Classes registered in hooks
+C) Instances of \TYPO3\CMS\Core\SingletonInterface and Extbase controllers
+D) Fluid data processors
+Answer: C
+
+Question: What is the purpose of setting "public: true" in the configuration?
+A) To exclude a class from dependency injection
+B) To allow dependency injection for a class that is normally private
+C) To configure an XCLASSed class
+D) To prevent an Error on missing dependency injection for Method injection
+Answer: B
+
+Question: How can you ensure proper dependency injection when extending an existing class using XCLASS?
+A) By not injecting any additional dependencies
+B) By adding a reference to the extended class in the Configuration/Services.yaml file of the extending extension
+C) By configuring the new dependencies separately
+D) By renaming the extended class to a new name 
+Answer: B
+
+Question: What is the Symfony component that handles dependency injection?
+A) ObjectManager
+B) TYPO3 Core
+C) Service Container
+D) Extbase context
+Answer: C
+
+Question: Who wrote an article about Dependency Injection in TYPO3?
+A) Fabien Potencier
+B) Daniel Goerz
+C) PHP The Right Way
+D) None of the above
+Answer: B
+
+Question 1: What is the recommended usage for dependency injection in TYPO3?
+A) Method injection
+B) Interface injection
+C) Constructor injection
+D) Public injection
+Answer: C
+
+Question 2: Which class has been deprecated with TYPO3 v11.4?
+A) \TYPO3\CMS\Core\Utility\GeneralUtility
+B) \TYPO3\CMS\Extbase\Object\ObjectManager
+C) \TYPO3\CMS\Extbase\Object\ObjectManager and \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance()
+D) None of the above
+Answer: B
+
