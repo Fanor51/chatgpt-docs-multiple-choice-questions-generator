@@ -5,8 +5,8 @@ import os, logging, sys
 import time
 
 from dotenv import load_dotenv
-from Crawler import Crawler
-from ChatGPT import ChatGPT
+from Classes.Service.Crawler import Crawler
+from Classes.Service.ChatGPT import ChatGPT
 
 load_dotenv()
 
