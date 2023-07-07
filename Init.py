@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import os, logging, sys
+import time
+
 from dotenv import load_dotenv
 from Crawler import Crawler
 from ChatGPT import ChatGPT
-
-import time
 
 load_dotenv()
 
@@ -27,5 +27,3 @@ ChatGPT.create_questions(chatgpt,'DependencyInjection')
 
 end_time = time.time()
 print("END | Time elapsed: " + str(end_time - start_time) + " seconds")
-
-chatGPT chatgpt docs multiple choice questions generator

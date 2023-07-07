@@ -52,6 +52,10 @@ class ChatGPT:
 
             print('save ChatGPT Prompt result')
             print('__________________________')
+
+            if not os.path.exists('Data'):
+                os.makedirs('Data')
+
             # write content in a json file in this folder
             with open('Data/' + fileName + '.text', 'a') as outfile:
                 outfile.write(content + "\n\n")

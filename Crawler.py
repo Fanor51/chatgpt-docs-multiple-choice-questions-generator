@@ -3,6 +3,7 @@
 
 import requests
 import re
+import os
 
 from bs4 import BeautifulSoup
 
@@ -31,6 +32,11 @@ class Crawler:
 
         # Entferne alle Zeilenumbrüche am Anfang und am Ende des Textes
         text = text.strip()
+
+        # Check if the directory exists
+        if not os.path.exists('Content'):
+            # If it doesn't exist, create it
+            os.makedirs('Content')
 
         with open('Content/' + self.name +'.text', 'w') as outfile:
             outfile.write(text)
