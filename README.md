@@ -1,5 +1,19 @@
-# chatgpt-docs-multiple-choice-questions-generator
-Pyrhon 3 Scripts for generating multiple choice questions from code docs websites.
+# [POC] chatgpt-docs-multiple-choice-questions-generator
+Python 3 Scripts for generating multiple choice questions from code docs websites.
+
+## Future Idea
+The main idea for this project was to create educational data from crawling docs websites like https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/ApiOverview/Index.html and create randomized multiple choice quizes to learn for a certificate.
+
+## Known issues
+- Some content from pages are to long to send to chatGPT api and need to get splitted into multiple parts. Because every prompt stands for itself it is possible that context from the whole page gets lost in the questions.
+- 
+
+## Open Tasks
+- Crawl a page tree / multiple pages and not only 1 Page
+- Check and maybe optimize incoming data structure
+- Maybe import data directly into a DB?
+- Optimize code
+- ... 
 
 ## Python Packages
 

@@ -3,7 +3,6 @@
 
 import os, logging, sys
 import time
-
 from dotenv import load_dotenv
 from Classes.Service.Crawler import Crawler
 from Classes.Service.ChatGPT import ChatGPT
