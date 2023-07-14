@@ -31,6 +31,10 @@ You need a free or paid open AI key from -> https://platform.openai.com/account/
 - [WIP] Change the html dom classes (Crawler.py:19 and 21) where the content lies you want to crawl/create questions from. 
 - Run the script
 
+## sitemap.json
+![Sitemap configuration](Assets/img-2.png)
+The pages which should be crawled and the folder structure where the data should be stored.
+
 ## Folder
 - Content - The extracted content from the page
 - Questions - The KI generated multiple choice questions in text format.
