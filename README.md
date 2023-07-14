@@ -1,5 +1,5 @@
 # [POC] chatgpt-docs-multiple-choice-questions-generator
-Python 3 Scripts for generating multiple choice questions from code docs websites.
+Python 3 (Python 3.9.12) Scripts for generating multiple choice questions from code docs websites.
 
 ![Script showcase](Assets/img-1.png)
 
