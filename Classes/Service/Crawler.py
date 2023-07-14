@@ -8,9 +8,10 @@ import os
 from bs4 import BeautifulSoup
 
 class Crawler:
-    def __init__(self, url, name):
+    def __init__(self, url, name, folder):
         self.url = url
         self.name = name
+        self.folder = folder
 
     def get_content_from_api(self):
         response = requests.get(self.url)
@@ -32,18 +33,25 @@ class Crawler:
 
         # Entferne alle Zeilenumbrüche am Anfang und am Ende des Textes
         text = text.strip()
-
+        
         # Check if the directory exists
-        if not os.path.exists('Content'):
+        if not os.path.exists(self.get_path()):
             # If it doesn't exist, create it
-            os.makedirs('Content')
+            os.makedirs(self.get_path())
 
-        with open('Content/' + self.name +'.text', 'w') as outfile:
+        with open(self.get_path() + self.name + '.text', 'w') as outfile:
             outfile.write(text)
             outfile.close()
 
     def get_content(self):
-        with open('Content/' + self.name +'.text', 'r') as file:
+        with open(self.get_path() + self.name + '.text', 'r') as file:
             content = file.read()
             file.close()
             return content
+        
+    def get_path(self):
+        path = 'Content'
+        if self.folder:
+            path = path + '/' + self.folder
+        
+        return path + '/'

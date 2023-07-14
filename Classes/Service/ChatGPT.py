@@ -6,10 +6,12 @@ import openai
 
 class ChatGPT:
 
-    def __init__(self, prompt):
+    def __init__(self, prompt, name, folder):
         self.prompt = prompt
+        self.name = name
+        self.folder = folder
 
-    def create_questions(self, fileName, amount=2):
+    def create_questions(self, amount=2):
         openai.api_key = os.getenv('OPEN_AI_API_KEY')
 
         out = []
@@ -19,28 +21,28 @@ class ChatGPT:
                 out[-1] += ' ' + chunk
             else:
                 out.append(chunk)
-        print('Text splitted in ' + str(len(out)) + ' parts')
+        print('-- Text splitted in ' + str(len(out)) + ' parts')
         
         index = 1
         for part in out:
-            print('Prompt ' + str(index) + ' from ' + str(len(out)))
+            print('-- Prompt ' + str(index) + ' from ' + str(len(out)))
             
-            chatgptPrompt = '''Create ''' + str(amount) + '''  multiple choice test questions based on the Text below.
-            Each question can have 4 answers. 
-            At least one answer must be correct.
+            chatgptPrompt = '''Create ''' + str(amount) + ''' multiple choice test questions based on the Text below.
+Each question can have 4 answers. 
+At least one answer must be correct.
 
-            The Format should be like this:
-            Question: What is the answer to this question?
-            A) This is not the answer
-            B) This is not the answer
-            C) This is not the answer
-            D) This is the answer
-            Answer: D
+The Format should be like this:
+Question: What is the answer to this question?
+A) This is not the answer
+B) This is not the answer
+C) This is not the answer
+D) This is the answer
+Answer: D
 
-            The Text:
-            ''' + part + ''
+The Text:
+''' + part + ''
 
-            print('send ChatGPT Prompt')
+            print('-- send ChatGPT Prompt')
             completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
@@ -50,14 +52,20 @@ class ChatGPT:
 
             content = completion.choices[0].message.content
 
-            print('save ChatGPT Prompt result')
+            print(' save ChatGPT Prompt result')
             print('__________________________')
 
-            if not os.path.exists('Data'):
-                os.makedirs('Data')
+
+            path = 'Questions/'
+            if self.folder:
+                path = path + '/' + self.folder + '/'
+                
+            # Check if the directory exist
+            if not os.path.exists(path):
+                os.makedirs(path)
 
             # write content in a json file in this folder
-            with open('Data/' + fileName + '.text', 'a') as outfile:
+            with open(path + self.name + '.text', 'a') as outfile:
                 outfile.write(content + "\n\n")
                 outfile.close()
             

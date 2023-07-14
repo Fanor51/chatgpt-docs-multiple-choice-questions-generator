@@ -1,21 +1,41 @@
 # [POC] chatgpt-docs-multiple-choice-questions-generator
 Python 3 Scripts for generating multiple choice questions from code docs websites.
 
+![Script showcase](Assets/img-1.png)
+
 ## Future Idea
 The main idea for this project was to create educational data from crawling docs websites like https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/ApiOverview/Index.html and create randomized multiple choice quizes to learn for a certificate.
 
+## Open AI Api Key
+You need a free or paid open AI key from -> https://platform.openai.com/account/api-keys but have allways a look in your usage -> https://platform.openai.com/account/usage.
+
 ## Known issues
 - Some content from pages are to long to send to chatGPT api and need to get splitted into multiple parts. Because every prompt stands for itself it is possible that context from the whole page gets lost in the questions.
-- 
+- ...
 
 ## Open Tasks
 - Crawl a page tree / multiple pages and not only 1 Page
+- Optimize code
+- Make Models and treashold configureble (https://platform.openai.com/docs/models/gpt-3-5)
 - Check and maybe optimize incoming data structure
 - Maybe import data directly into a DB?
+- Generate qustions in other formats and not only text (json, xml, yml)
+- Implement click cli instead of lame print outputs (https://click.palletsprojects.com/en/8.1.x/)
 - Optimize code
 - ... 
 
-## Python Packages
+## Getting started
+- Copy the .env_copy file to .env in the same folder
+- Fill in the missing variables
+- Change the sitemap.json with your urls.
+- [WIP] Change the html dom classes (Crawler.py:19 and 21) where the content lies you want to crawl/create questions from. 
+- Run the script
+
+## Folder
+- Content - The extracted content from the page
+- Questions - The KI generated multiple choice questions in text format.
+
+## Python Packages 
 
 - pip3 install {package}
 
@@ -50,4 +70,6 @@ yarl               1.9.2
 
 `` python3 Init.py ``
 
+## About me
+I have never programmed in python so be patient with me if some things look a bit fishy ;) just PR if you got some improvement!
 

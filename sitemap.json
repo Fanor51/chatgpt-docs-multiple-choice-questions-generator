@@ -1,0 +1,20 @@
+{
+    "page": "TYPO3 Core API 11.5",
+    "folder": "TYPO3-Core-API-11.5",
+    "pageSiteMap": [
+        {
+            "name": "Assets",
+            "url": "https://docs.typo3.org/m/typo3/reference-coreapi/11.5/en-us/ApiOverview/Assets/Index.html"
+        },
+        {
+            "name": "Authentication",
+            "folder": "Authentication",
+            "url": "https://docs.typo3.org/m/typo3/reference-coreapi/11.5/en-us/ApiOverview/Authentication/Index.html"
+        },
+        {
+            "name": "MultiFactorAuthentication",
+            "folder": "Authentication/MultiFactorAuthentication",
+            "url": "https://docs.typo3.org/m/typo3/reference-coreapi/11.5/en-us/ApiOverview/Authentication/MultiFactorAuthentication.html"
+        }
+    ]
+}
