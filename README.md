@@ -16,7 +16,7 @@ You need a free or paid open AI key from -> https://platform.openai.com/account/
 ## Open Tasks
 - ~~ Crawl a page tree / multiple pages and not only 1 Page~~ [Done]
 - Optimize code
-- Make Models and treashold configureble (https://platform.openai.com/docs/models/gpt-3-5)
+- ~~Make Models and treashold configureble (https://platform.openai.com/docs/models/gpt-3-5)~~ [Done]
 - Check and maybe optimize incoming data structure
 - Maybe import data directly into a DB?
 - Generate qustions in other formats and not only text (json, xml, yml)
