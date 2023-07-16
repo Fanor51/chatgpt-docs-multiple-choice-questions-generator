@@ -15,7 +15,7 @@ class ChatGPT:
         openai.api_key = os.getenv('OPEN_AI_API_KEY')
 
         out = []
-        threshold = 2000
+        threshold = int(os.getenv('TEXT_THRESHOLD'))
         for chunk in self.prompt.split('\n\n'):
             if out and len(chunk)+len(out[-1]) < threshold:
                 out[-1] += ' ' + chunk
@@ -44,7 +44,7 @@ The Text:
 
             print('-- send ChatGPT Prompt')
             completion = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
+                model = os.getenv('MODEL_TO_USE'),
                 messages=[
                     {"role": "user", "content": chatgptPrompt}
                 ]
