@@ -14,14 +14,15 @@ You need a free or paid open AI key from -> https://platform.openai.com/account/
 - ...
 
 ## Open Tasks
-- Crawl a page tree / multiple pages and not only 1 Page
+- ~~ Crawl a page tree / multiple pages and not only 1 Page~~ [Done]
 - Optimize code
-- Make Models and treashold configureble (https://platform.openai.com/docs/models/gpt-3-5)
+- ~~Make Models and treashold configureble (https://platform.openai.com/docs/models/gpt-3-5)~~ [Done]
 - Check and maybe optimize incoming data structure
 - Maybe import data directly into a DB?
 - Generate qustions in other formats and not only text (json, xml, yml)
 - Implement click cli instead of lame print outputs (https://click.palletsprojects.com/en/8.1.x/)
 - Optimize code
+- add a requirements.txt for pip packages (pip install -r requirements.txt)
 - ... 
 
 ## Getting started
@@ -30,6 +31,9 @@ You need a free or paid open AI key from -> https://platform.openai.com/account/
 - Change the sitemap.json with your urls.
 - [WIP] Change the html dom classes (Crawler.py:19 and 21) where the content lies you want to crawl/create questions from. 
 - Run the script
+
+## .ENV settings
+you can run this with the small "MODEL_TO_USE" gpt-3.5-turbo with a max "TEXT_THRESHOLD" of 2000 and 2 AMOUNT_OF_QUESTIONS_PER_PROMPT or "MODEL_TO_USE" gpt-3.5-turbo-16k with a max "TEXT_THRESHOLD" of 6000 and 6/10 AMOUNT_OF_QUESTIONS_PER_PROMPT. gpt-3.5-turbo-16k would be better to use because there is more context for the question creation but this model cost a bit more. More info a here to find ->  https://openai.com/pricing and https://platform.openai.com/docs/models/gpt-3-5
 
 ## sitemap.json
 ![Sitemap configuration](Assets/img-2.png)

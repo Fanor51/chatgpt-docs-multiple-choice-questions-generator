@@ -10,6 +10,13 @@ from Classes.Service.SitemapLoader import SitemapLoader
 
 load_dotenv()
 
+print("SETUP\n")
+print("SITEMAP_JSON_FILE_NAME: " + os.getenv('SITEMAP_JSON_FILE_NAME'))
+print("MODEL_TO_USE: " + os.getenv('MODEL_TO_USE'))
+print("AMOUNT_OF_QUESTIONS_PER_PROMPT: " + os.getenv('AMOUNT_OF_QUESTIONS_PER_PROMPT'))
+print("TEXT_THRESHOLD: " + os.getenv('TEXT_THRESHOLD'))
+print()
+
 start_time = time.time()
 print("Load Sitemap")
 sitemapJson = SitemapLoader(os.getenv('SITEMAP_JSON_FILE_NAME')).load_sitemap()
@@ -34,7 +41,7 @@ for each in sitemapJson['pageSiteMap'] :
     print('Start ChatGPT\n')
     print('__________________________')
     chatgpt = ChatGPT(content, each['name'], folder)
-    ChatGPT.create_questions(chatgpt)
+    ChatGPT.create_questions(chatgpt, int(os.getenv('AMOUNT_OF_QUESTIONS_PER_PROMPT')))
     print('')
     print('Finished ChatGPT - Start next Page')
     print('==========================\n\n')
